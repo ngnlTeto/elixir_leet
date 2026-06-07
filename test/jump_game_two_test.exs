@@ -13,4 +13,8 @@ defmodule JumpGameTwoTest do
   test "case 38" do
     assert Solutions.JumpGameTwo.jump([2,1]) == 1
   end
+
+  test "case 68" do
+    assert Solutions.JumpGameTwo.jump([1,2,3]) == 2
+  end
 end

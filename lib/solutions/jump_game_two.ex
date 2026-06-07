@@ -7,13 +7,14 @@ defmodule Solutions.JumpGameTwo do
   def jump(nums, count) when length(nums) - 1 <= hd(nums), do: count + 1
 
   @spec jump(nums :: [integer], count :: integer) :: integer
-  def jump(nums, count) do
+  def jump([head | tail], count) do
     {index, _} =
-      nums
-      |> Enum.slice(1..hd(nums))
+      tail
+      |> Enum.slice(0..(head - 1))
       |> Enum.with_index(fn el, i -> {i, el} end)
+      |> IO.inspect()
       |> Enum.max_by(fn {i, el} -> i + el end, &>/2)
 
-    jump(Enum.drop(nums, index + 1), count + 1)
+    jump(Enum.drop(tail, index), count + 1)
   end
 end
