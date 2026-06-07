@@ -10,10 +10,10 @@ defmodule Solutions.JumpGameTwo do
   def jump(nums, count) do
     {index, _} =
       nums
-      |> Enum.with_index(fn el, i -> {i, el} end)
       |> Enum.slice(1..hd(nums))
+      |> Enum.with_index(fn el, i -> {i, el} end)
       |> Enum.max_by(fn {i, el} -> i + el end, &>/2)
 
-    jump(Enum.drop(nums, index), count + 1)
+    jump(Enum.drop(nums, index + 1), count + 1)
   end
 end
